@@ -1,5 +1,9 @@
 package com.example.schoolapi.entity;//-
 
+import java.util.HashSet;
+// import java.util.List;
+import java.util.Set;
+
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -19,4 +23,10 @@ public class Student {
 
     @Column(unique = true, nullable = false)
     private String email;
+
+    // @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
+    // private List<StudentClasses> studentClasses;
+
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<StudentClasses> studentClasses = new HashSet<>();
 }
